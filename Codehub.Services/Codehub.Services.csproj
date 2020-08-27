@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootstrapService.cs" />
     <Compile Include="CodehubService.cs" />
     <Compile Include="CssService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -33,6 +33,7 @@ namespace Codehub.Data
         }
         public DbSet<Hubs> Codehubs { get; set; }
         public DbSet<Css> Csses { get; set; }
+        public DbSet<Bootstrap> bootstraps { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
