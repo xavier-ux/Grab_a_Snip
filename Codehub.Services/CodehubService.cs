@@ -89,5 +89,18 @@ namespace Codehub.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool DeleteCodehub(int codehubId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Codehubs
+                    .Single(e => e.CodehubId == codehubId && e.OwnerId == _userId);
+                ctx.Codehubs.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

@@ -239,6 +239,9 @@
     <Content Include="Views\Codehub\Index.cshtml" />
     <Content Include="Views\Codehub\Create.cshtml" />
     <Content Include="Views\Codehub\Details.cshtml" />
+    <Content Include="Views\Codehub\Edit.cshtml" />
+    <Content Include="Views\Codehub\Delete.cshtml" />
+    <Content Include="Views\Shared\Display Templates\DateTimeOffset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
