@@ -24,7 +24,9 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Codehubs","Index","Codehub")</li>
+                        <li>@Html.ActionLink("Codehubs", "Index", "Codehub")</li>
+                        <li>@Html.ActionLink("Css", "Index", "Csshub")</li>
+                        <li>@Html.ActionLink("Bootstrap", "Index", "Bootstraphub")</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

@@ -61,6 +61,10 @@
     <Compile Include="CodehubDetail.cs" />
     <Compile Include="CodehubEdit.cs" />
     <Compile Include="CodehubListItem.cs" />
+    <Compile Include="CssDetail.cs" />
+    <Compile Include="CssEdit.cs" />
+    <Compile Include="CssCreate.cs" />
+    <Compile Include="CssListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="Css.cs" />
     <Compile Include="Hubs.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202008251948128_InitialMigration.cs" />
@@ -66,6 +68,10 @@
     <Compile Include="Migrations\202008261446034_NameChangeMigration.cs" />
     <Compile Include="Migrations\202008261446034_NameChangeMigration.designer.cs">
       <DependentUpon>202008261446034_NameChangeMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008271921454_CssHubSetUp.cs" />
+    <Compile Include="Migrations\202008271921454_CssHubSetUp.designer.cs">
+      <DependentUpon>202008271921454_CssHubSetUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008261446034_NameChangeMigration.resx">
       <DependentUpon>202008261446034_NameChangeMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008271921454_CssHubSetUp.resx">
+      <DependentUpon>202008271921454_CssHubSetUp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
