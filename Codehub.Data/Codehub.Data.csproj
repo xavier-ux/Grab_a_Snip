@@ -73,6 +73,14 @@
     <Compile Include="Migrations\202008271921454_CssHubSetUp.designer.cs">
       <DependentUpon>202008271921454_CssHubSetUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008272047122_BootstrapHubSetUp.cs" />
+    <Compile Include="Migrations\202008272047122_BootstrapHubSetUp.designer.cs">
+      <DependentUpon>202008272047122_BootstrapHubSetUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008272123310_fixedlinks.cs" />
+    <Compile Include="Migrations\202008272123310_fixedlinks.designer.cs">
+      <DependentUpon>202008272123310_fixedlinks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +97,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008271921454_CssHubSetUp.resx">
       <DependentUpon>202008271921454_CssHubSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008272047122_BootstrapHubSetUp.resx">
+      <DependentUpon>202008272047122_BootstrapHubSetUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008272123310_fixedlinks.resx">
+      <DependentUpon>202008272123310_fixedlinks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

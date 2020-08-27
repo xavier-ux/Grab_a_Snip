@@ -72,7 +72,7 @@ namespace Codehub.Services
                         ModifiedUtc = entity.ModifiedUtc
                     };
             }
-        }
+        } 
         public bool UpdateBootstrap(BootstrapEdit model)
         {
             using (var ctx = new ApplicationDbContext())
