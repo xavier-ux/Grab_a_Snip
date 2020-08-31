@@ -29,10 +29,18 @@
         <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-            <dd>
-        <code>
-                @Html.DisplayFor(model => model.Content)
-        </code>
+        <dd>
+            <pre> 
+            
+              <!--This is where the javascript will target-->
+            <div id="foo">
+                    @Html.DisplayFor(model => model.Content)
+                </div>
+                
+             </pre>
+            <!--This is the button for the clipboard javascript-->
+            <button class="btn-prima" data-clipboard-target="#foo">Copy To Clipboard</button>
+
         </dd>
 
         <dt>
@@ -54,6 +62,17 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+    <script>
+        new ClipboardJS('.btn')
+    </script>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CssId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+@* This was added to the main css 
+    <style> 
+       #foo {
+            height: 300px;
+            width: 300px;
+        }
+    </style>*@

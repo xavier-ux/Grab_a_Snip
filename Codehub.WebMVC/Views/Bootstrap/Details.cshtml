@@ -31,7 +31,17 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Content)
+            <pre> 
+            <code>
+              <!--This is where the javascript will target-->
+            <div id="foo">
+                    @Html.DisplayFor(model => model.Content)
+                </div>
+                </code>
+             </pre>
+            <!--This is the button for the clipboard javascript-->
+            <button class="btn" data-clipboard-target="#foo">Copy To Clipboard</button>
+
         </dd>
 
         <dt>
