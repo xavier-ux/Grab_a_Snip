@@ -6,9 +6,9 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 
 @if (TempData.ContainsKey("SaveResult"))
 {
@@ -20,16 +20,18 @@
         @TempData["SaveResult"]
     </div>
 }
+
+@*Add this on tuesday marker here just incase I need to remove*@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CodehubId)
+            @Html.DisplayNameFor(cssmodel => cssmodel.CssId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(cssmodel => cssmodel.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedUtc)
+            @Html.DisplayNameFor(cssmodel => cssmodel.CreatedUtc)
         </th>
         <th></th>
     </tr>
@@ -38,7 +40,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodehubId)
+                @Html.DisplayFor(modelItem => item.CssId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
@@ -47,11 +49,45 @@
                 @Html.DisplayFor(modelItem => item.CreatedUtc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CodehubId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CodehubId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CodehubId })
+                @Html.ActionLink("Details", "Details", new { id = item.CssId })
             </td>
         </tr>
     }
 
 </table>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(bootmodel => bootmodel.BootstrapId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(bootmodel => bootmodel.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(bootmodel => bootmodel.CreatedUtc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(bootmodelItem => item.BootstrapId)
+            </td>
+            <td>
+                @Html.DisplayFor(bootmodelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(bootmodelItem => item.CreatedUtc)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.BootstrapId })
+
+            </td>
+        </tr>
+    }
+
+</table>
+

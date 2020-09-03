@@ -16,6 +16,7 @@ namespace Codehub.Services
         {
             _userId = userId;
         }
+        
         public bool CreateCss(CssCreate model)
         {
             var entity =
@@ -41,6 +42,26 @@ namespace Codehub.Services
                     ctx
                         .Csses
                         .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new CssListItem
+                                {
+                                    CssId = e.CssId,
+                                    Title = e.Title,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<CssListItem> GetAllCss()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Csses
                         .Select(
                             e =>
                                 new CssListItem

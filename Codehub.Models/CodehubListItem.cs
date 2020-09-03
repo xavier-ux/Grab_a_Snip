@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Codehub.Data;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,5 +14,11 @@ namespace Codehub.Models
             public string Title { get; set; }
 
             public DateTimeOffset CreatedUtc { get; set; }
+        //Add this on tuesday marker here just incase I need to remove
+        public int CssId { get; set; }
+        public int BootstrapId { get; set; }
+
+       
     }
+
 }

@@ -81,6 +81,10 @@
     <Compile Include="Migrations\202008272123310_fixedlinks.designer.cs">
       <DependentUpon>202008272123310_fixedlinks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009021550016_foreignkey.cs" />
+    <Compile Include="Migrations\202009021550016_foreignkey.designer.cs">
+      <DependentUpon>202009021550016_foreignkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008272123310_fixedlinks.resx">
       <DependentUpon>202008272123310_fixedlinks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009021550016_foreignkey.resx">
+      <DependentUpon>202009021550016_foreignkey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

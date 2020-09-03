@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codehub.Data
 {
@@ -21,10 +22,19 @@ namespace Codehub.Data
 
         [Required]
         public string Content { get; set; }
+        //Add this on tuesday marker here just incase I need to remove
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
+        public int CssId { get; set; }
+        [ForeignKey("CssId")]
+        public virtual Css Css { get; set; }
+        public int BootstrapId { get; set; }
+
+        [ForeignKey("BootstrapId")]
+        public virtual Bootstrap Bootstrap { get; set; }
     }
+
 }

@@ -54,6 +54,26 @@ namespace Codehub.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<BootstrapListItem> GetAllBootstrap()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .bootstraps
+                        .Select(
+                            e =>
+                                new BootstrapListItem
+                                {
+                                    BootstrapId = e.BootstrapId,
+                                    Title = e.Title,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
         public BootstrapDetail GetBootstrapById(int id)
         {
             using (var ctx = new ApplicationDbContext())
