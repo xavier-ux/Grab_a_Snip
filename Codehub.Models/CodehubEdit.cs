@@ -11,5 +11,6 @@ namespace Codehub.Models
         public int CodehubId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+       
     }
 }

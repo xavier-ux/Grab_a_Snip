@@ -254,6 +254,9 @@
     <Content Include="Views\Bootstrap\Details.cshtml" />
     <Content Include="Views\Bootstrap\Edit.cshtml" />
     <Content Include="Views\Bootstrap\Delete.cshtml" />
+    <Content Include="Views\Css\Index2.cshtml" />
+    <Content Include="Views\Codehub\Index2.cshtml" />
+    <Content Include="Views\Bootstrap\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,18 +12,15 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">*@
-                    
-                @*</button>*@
-                @Html.ActionLink("Application name", "Index", "Home", new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Codehubs", "Index", "Codehub")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Codehubs", "Index", "Codehub")</li>
                         <li>@Html.ActionLink("Css", "Index", "Css")</li>
+                        <li>@Html.ActionLink("All Code", "Index2", "Css")</li>
                         <li>@Html.ActionLink("Bootstrap", "Index", "Bootstrap")</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -37,12 +34,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Codehub by Xavier</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

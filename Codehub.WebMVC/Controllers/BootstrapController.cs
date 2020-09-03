@@ -20,6 +20,14 @@ namespace Codehub.WebMVC.Controllers
 
             return View(model);
         }
+        public ActionResult Index2()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new BootstrapService(userId);
+            var model = service.GetAllBootstrap();
+
+            return View(model);
+        }
         //GET
         public ActionResult Create()
         {

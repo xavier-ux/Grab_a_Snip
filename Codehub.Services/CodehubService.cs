@@ -1,8 +1,10 @@
 ﻿using Codehub.Data;
 using Codehub.Models;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,13 +49,14 @@ namespace Codehub.Services
                                 {
                                     CodehubId = e.CodehubId,
                                     Title = e.Title,
-                                    CreatedUtc = e.CreatedUtc
+                                    CreatedUtc = e.CreatedUtc,
                                 }
                         );
 
                 return query.ToArray();
             }
         }
+
         public CodehubDetail GetCodehubById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -66,6 +69,65 @@ namespace Codehub.Services
                     new CodehubDetail
                     {
                         CodehubId = entity.CodehubId,
+                        Title = entity.Title,
+                        Content = entity.Content,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc,
+                    };
+            }
+        }
+        public IEnumerable<CssListItem> GetAllCss()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Csses
+                        .Select(
+                            e =>
+                                new CssListItem
+                                {
+                                    CssId = e.CssId,
+                                    Title = e.Title,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<BootstrapListItem> GetAllBootstrap()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .bootstraps
+                        .Select(
+                            e =>
+                                new BootstrapListItem
+                                {
+                                    BootstrapId = e.BootstrapId,
+                                    Title = e.Title,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public CssDetail GetCssById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Csses
+                        .Single(e => e.CssId == id && e.OwnerId == _userId);
+                return
+                    new CssDetail
+                    {
+                        CssId = entity.CssId,
                         Title = entity.Title,
                         Content = entity.Content,
                         CreatedUtc = entity.CreatedUtc,
