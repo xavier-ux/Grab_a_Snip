@@ -21,13 +21,12 @@ namespace Codehub.WebMVC.Controllers
 
             return View(model);
         }
-        public ActionResult Index2()
+       
+        public ActionResult CssIndex3(int Id)
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new CssService(userId);
-            var model = service.GetAllCss();
-            var bootservice = new BootstrapService(userId);
-            ViewBag.Bootstrap = bootservice.GetAllBootstrap();
+            var service = new CodehubService(userId);
+            var model = service.GetAllCssByCodeHubId(Id);
 
             return View(model);
         }
@@ -54,10 +53,15 @@ namespace Codehub.WebMVC.Controllers
             ModelState.AddModelError("", "Note could not be created.");
             return View(model);
         }
+
         public ActionResult Details(int id)
         {
             var svc = CreateCodehubService();
             var model = svc.GetCodehubById(id);
+            var userId = Guid.Parse(User.Identity.GetUserId());//line 61-63 are just for showing all bootstrap need to change it to show a certain bootstrap
+            var bootstrapsvc = new BootstrapService(userId);
+            model.bootstrapListItems = bootstrapsvc.GetBootstrap();
+            ViewBag.CssByCodehubId = svc.GetAllCssByCodeHubId(id);
 
             return View(model);
         }
@@ -70,7 +74,7 @@ namespace Codehub.WebMVC.Controllers
                 {
                     CodehubId = detail.CodehubId,
                     Title = detail.Title,
-                    Content = detail.Content
+                    Description = detail.Description
                 };
             return View(model);
         }

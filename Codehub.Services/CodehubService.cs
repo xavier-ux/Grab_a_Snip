@@ -21,17 +21,17 @@ namespace Codehub.Services
         public bool CreateCodehub(CodehubCreate model)
         {
             var entity =
-                new Hubs()
+                new Data.Codehub()
                 {
                     OwnerId = _userId,
                     Title = model.Title,
-                    Content = model.Content,
+                    Description = model.Description,
                     CreatedUtc = DateTimeOffset.Now
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Codehubs.Add(entity);
+                ctx.CodeHubs.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -41,7 +41,7 @@ namespace Codehub.Services
             {
                 var query =
                     ctx
-                        .Codehubs
+                        .CodeHubs
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
@@ -63,17 +63,16 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                        .Codehubs
+                        .CodeHubs
                         .Single(e => e.CodehubId == id && e.OwnerId == _userId);
-                return
-                    new CodehubDetail
-                    {
-                        CodehubId = entity.CodehubId,
-                        Title = entity.Title,
-                        Content = entity.Content,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc,
-                    };
+                return new CodehubDetail
+                {
+                    CodehubId = entity.CodehubId,
+                    Title = entity.Title,
+                    Description = entity.Description
+                };
+                    
+
             }
         }
         public IEnumerable<CssListItem> GetAllCss()
@@ -82,7 +81,7 @@ namespace Codehub.Services
             {
                 var query =
                     ctx
-                        .Csses
+                        .CssCodes
                         .Select(
                             e =>
                                 new CssListItem
@@ -96,18 +95,20 @@ namespace Codehub.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<BootstrapListItem> GetAllBootstrap()
+        public IEnumerable<CssListItem> GetAllCssByCodeHubId(int Id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .bootstraps
+                        .CodeHubs
+                        .Single(e => e.CodehubId == Id && e.OwnerId == _userId)
+                        .CssCodes
                         .Select(
                             e =>
-                                new BootstrapListItem
+                                new CssListItem
                                 {
-                                    BootstrapId = e.BootstrapId,
+                                    CssId = e.CssId,
                                     Title = e.Title,
                                     CreatedUtc = e.CreatedUtc
                                 }
@@ -116,36 +117,37 @@ namespace Codehub.Services
                 return query.ToArray();
             }
         }
-        public CssDetail GetCssById(int id)
+        public bool ConnectCodeWithAHub(int CssId, CodeHubId model)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
+                var Css =
                     ctx
-                        .Csses
-                        .Single(e => e.CssId == id && e.OwnerId == _userId);
-                return
-                    new CssDetail
-                    {
-                        CssId = entity.CssId,
-                        Title = entity.Title,
-                        Content = entity.Content,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
-                    };
+                    .CssCodes
+                    .Single(cs => cs.CssId == CssId);
+
+                var Hubs =
+                ctx
+                .CodeHubs
+                .Single(h => h.CodehubId == model.CodehubId);
+
+                Hubs.CssCodes.Add(Css);
+                return ctx.SaveChanges() == 1;
             }
         }
-        public bool UpdateCodehub (CodehubEdit model)
+
+
+        public bool UpdateCodehub(CodehubEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Codehubs
+                        .CodeHubs
                         .Single(e => e.CodehubId == model.CodehubId && e.OwnerId == _userId);
 
                 entity.Title = model.Title;
-                entity.Content = model.Content;
+                entity.Description = model.Description;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
@@ -157,9 +159,9 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                    .Codehubs
+                    .CodeHubs
                     .Single(e => e.CodehubId == codehubId && e.OwnerId == _userId);
-                ctx.Codehubs.Remove(entity);
+                ctx.CodeHubs.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

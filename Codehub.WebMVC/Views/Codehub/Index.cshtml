@@ -6,88 +6,46 @@
 
 <h2>Index</h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodehubId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
 
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodehubId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CodehubId }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
 }
 
-@*Add this on tuesday marker here just incase I need to remove*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(cssmodel => cssmodel.CssId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(cssmodel => cssmodel.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(cssmodel => cssmodel.CreatedUtc)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CssId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedUtc)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.CssId })
-            </td>
-        </tr>
-    }
-
 </table>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(bootmodel => bootmodel.BootstrapId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(bootmodel => bootmodel.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(bootmodel => bootmodel.CreatedUtc)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(bootmodelItem => item.BootstrapId)
-            </td>
-            <td>
-                @Html.DisplayFor(bootmodelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(bootmodelItem => item.CreatedUtc)
-            </td>
-            <td>
-
-                @Html.ActionLink("Details", "Details", new { id = item.BootstrapId })
-
-            </td>
-        </tr>
-    }
-
-</table>
-

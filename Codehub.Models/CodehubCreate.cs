@@ -15,7 +15,7 @@ namespace Codehub.Models
         public string Title { get; set; }
 
         [MaxLength(8000)]
-        public string Content { get; set; }
+        public string Description { get; set; }
 
     }
 }

@@ -19,7 +19,7 @@ namespace Codehub.Services
         public bool CreateBootstrap(BootstrapCreate model)
         {
             var entity =
-                new Bootstrap()
+                new BootstrapCode()
                 {
                     OwnerId = _userId,
                     Title = model.Title,
@@ -29,7 +29,7 @@ namespace Codehub.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.bootstraps.Add(entity);
+                ctx.BootstrapCodes.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -39,7 +39,7 @@ namespace Codehub.Services
             {
                 var query =
                     ctx
-                        .bootstraps
+                        .BootstrapCodes
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
@@ -60,7 +60,7 @@ namespace Codehub.Services
             {
                 var query =
                     ctx
-                        .bootstraps
+                        .BootstrapCodes
                         .Select(
                             e =>
                                 new BootstrapListItem
@@ -80,7 +80,7 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                        .bootstraps
+                        .BootstrapCodes
                         .Single(e => e.BootstrapId == id && e.OwnerId == _userId);
                 return
                     new BootstrapDetail
@@ -99,7 +99,7 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                        .bootstraps
+                        .BootstrapCodes
                         .Single(e => e.BootstrapId == model.BootstrapId && e.OwnerId == _userId);
 
                 entity.Title = model.Title;
@@ -115,9 +115,9 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                    .bootstraps
+                    .BootstrapCodes
                     .Single(e => e.BootstrapId == codehubId && e.OwnerId == _userId);
-                ctx.bootstraps.Remove(entity);
+                ctx.BootstrapCodes.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
