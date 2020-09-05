@@ -13,7 +13,7 @@ namespace Codehub.Models
     {
         public int CodehubId { get; set; }
         public string Title { get; set; }
-        public string Content { get; set; }
+        public string Description { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
         [Display(Name = "ModifiedUtc")]
@@ -23,5 +23,6 @@ namespace Codehub.Models
         public int CssId { get; set; }
         public int BootstrapId { get; set; }
 
+        public IEnumerable<BootstrapListItem> bootstrapListItems { get; set; }
     }
 }

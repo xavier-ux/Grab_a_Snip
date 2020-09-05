@@ -57,9 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap.cs" />
-    <Compile Include="Css.cs" />
-    <Compile Include="Hubs.cs" />
+    <Compile Include="BootstrapCode.cs" />
+    <Compile Include="CssCode.cs" />
+    <Compile Include="Codehub.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202008251948128_InitialMigration.cs" />
     <Compile Include="Migrations\202008251948128_InitialMigration.designer.cs">
@@ -84,6 +84,14 @@
     <Compile Include="Migrations\202009021550016_foreignkey.cs" />
     <Compile Include="Migrations\202009021550016_foreignkey.designer.cs">
       <DependentUpon>202009021550016_foreignkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009030436517_removedstar.cs" />
+    <Compile Include="Migrations\202009030436517_removedstar.designer.cs">
+      <DependentUpon>202009030436517_removedstar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009032146257_thursmigration.cs" />
+    <Compile Include="Migrations\202009032146257_thursmigration.designer.cs">
+      <DependentUpon>202009032146257_thursmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009021550016_foreignkey.resx">
       <DependentUpon>202009021550016_foreignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009030436517_removedstar.resx">
+      <DependentUpon>202009030436517_removedstar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009032146257_thursmigration.resx">
+      <DependentUpon>202009032146257_thursmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

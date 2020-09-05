@@ -20,7 +20,7 @@ namespace Codehub.Services
         public bool CreateCss(CssCreate model)
         {
             var entity =
-                new Css()
+                new CssCode()
                 {
                     OwnerId = _userId,
                     Title = model.Title,
@@ -30,7 +30,7 @@ namespace Codehub.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Csses.Add(entity);
+                ctx.CssCodes.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -40,7 +40,7 @@ namespace Codehub.Services
             {
                 var query =
                     ctx
-                        .Csses
+                        .CssCodes
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
@@ -61,7 +61,7 @@ namespace Codehub.Services
             {
                 var query =
                     ctx
-                        .Csses
+                        .CssCodes
                         .Select(
                             e =>
                                 new CssListItem
@@ -81,7 +81,7 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                        .Csses
+                        .CssCodes
                         .Single(e => e.CssId == id && e.OwnerId == _userId);
                 return
                     new CssDetail
@@ -100,7 +100,7 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                        .Csses
+                        .CssCodes
                         .Single(e => e.CssId == model.CssId && e.OwnerId == _userId);
 
                 entity.Title = model.Title;
@@ -116,9 +116,9 @@ namespace Codehub.Services
             {
                 var entity =
                     ctx
-                    .Csses
+                    .CssCodes
                     .Single(e => e.CssId == CssId && e.OwnerId == _userId);
-                ctx.Csses.Remove(entity);
+                ctx.CssCodes.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

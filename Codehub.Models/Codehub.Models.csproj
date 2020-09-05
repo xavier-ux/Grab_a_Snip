@@ -57,9 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeDetailPage.cs" />
     <Compile Include="CodehubCreate.cs" />
     <Compile Include="CodehubDetail.cs" />
     <Compile Include="CodehubEdit.cs" />
+    <Compile Include="CodeHubId.cs" />
     <Compile Include="CodehubListItem.cs" />
     <Compile Include="BootstrapCreate.cs" />
     <Compile Include="BootstrapDetail.cs" />

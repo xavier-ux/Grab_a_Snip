@@ -14,11 +14,12 @@ namespace Codehub.Models
             public string Title { get; set; }
 
             public DateTimeOffset CreatedUtc { get; set; }
+        public string Description { get; set; }
         //Add this on tuesday marker here just incase I need to remove
+      public int BootstrapId { get; set; }
         public int CssId { get; set; }
-        public int BootstrapId { get; set; }
 
-       
+
     }
 
 }

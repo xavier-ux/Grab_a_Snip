@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codehub.Data
 {
-    public class Hubs
+    public class Codehub
     {
         [Key]
         public int CodehubId { get; set; }
@@ -21,20 +21,17 @@ namespace Codehub.Data
         public string Title { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string Description { get; set; }
         //Add this on tuesday marker here just incase I need to remove
-
+        
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
-        public int CssId { get; set; }
-        [ForeignKey("CssId")]
-        public virtual Css Css { get; set; }
-        public int BootstrapId { get; set; }
-
-        [ForeignKey("BootstrapId")]
-        public virtual Bootstrap Bootstrap { get; set; }
+        public virtual ICollection<CssCode> CssCodes { get; set; }
+        public Codehub()
+        {
+            CssCodes = new HashSet<CssCode>();
+        }
     }
-
 }

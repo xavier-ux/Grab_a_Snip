@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Codehub.Data
 {
-    public class Bootstrap
+    public class BootstrapCode
     {
         [Key]
         public int BootstrapId { get; set; }

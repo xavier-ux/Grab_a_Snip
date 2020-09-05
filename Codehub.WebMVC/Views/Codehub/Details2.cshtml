@@ -1,11 +1,5 @@
 ﻿@model Codehub.Models.CodehubDetail
 
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
 <div>
     <h4>CodehubDetail</h4>
     <hr />
@@ -31,18 +25,9 @@
         </dt>
 
         <dd>
-            <div id="foo">
-                <pre> 
-                <code>
-              <!--This is where the javascript will target-->
-                    @Html.DisplayFor(model => model.Description)
-                </code>
-             </pre>
-            </div>
-            <!--This is the button for the clipboard javascript-->
-            <button class="btn" data-clipboard-target="#foo">Copy To Clipboard</button>
-
+            @Html.DisplayFor(model => model.Description)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </dt>
@@ -62,8 +47,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CodehubId }) |
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-@Html.Partial("../Bootstrap/Index2", (Codehub.Models.BootstrapListItem[])Model.bootstrapListItems);
-
+@Html.Partial("../Details2",(Codehub.Models.CssListItem[])ViewBag.CssByCodeHubId);
