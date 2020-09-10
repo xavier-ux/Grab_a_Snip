@@ -59,7 +59,7 @@
   <ItemGroup>
     <Compile Include="BootstrapCode.cs" />
     <Compile Include="CssCode.cs" />
-    <Compile Include="Codehub.cs" />
+    <Compile Include="CodeHub1.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\202008251948128_InitialMigration.cs" />
     <Compile Include="Migrations\202008251948128_InitialMigration.designer.cs">
@@ -93,6 +93,18 @@
     <Compile Include="Migrations\202009032146257_thursmigration.designer.cs">
       <DependentUpon>202009032146257_thursmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009041902518_Friday.cs" />
+    <Compile Include="Migrations\202009041902518_Friday.designer.cs">
+      <DependentUpon>202009041902518_Friday.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009050749266_SaturdayMorning.cs" />
+    <Compile Include="Migrations\202009050749266_SaturdayMorning.designer.cs">
+      <DependentUpon>202009050749266_SaturdayMorning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009091833408_codehub1Update.cs" />
+    <Compile Include="Migrations\202009091833408_codehub1Update.designer.cs">
+      <DependentUpon>202009091833408_codehub1Update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +136,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009032146257_thursmigration.resx">
       <DependentUpon>202009032146257_thursmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041902518_Friday.resx">
+      <DependentUpon>202009041902518_Friday.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009050749266_SaturdayMorning.resx">
+      <DependentUpon>202009050749266_SaturdayMorning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009091833408_codehub1Update.resx">
+      <DependentUpon>202009091833408_codehub1Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -71,6 +71,7 @@
     <Compile Include="CssCreate.cs" />
     <Compile Include="BootstrapListItem.cs" />
     <Compile Include="CssListItem.cs" />
+    <Compile Include="OnlyCodehubId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

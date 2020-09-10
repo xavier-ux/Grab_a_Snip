@@ -1,4 +1,5 @@
-﻿using Codehub.Models;
+﻿using Codehub.Data;
+using Codehub.Models;
 using Codehub.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -12,6 +13,7 @@ namespace Codehub.WebMVC.Controllers
     [Authorize]
     public class CodehubController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Codehub
         public ActionResult Index()
         {
@@ -31,8 +33,82 @@ namespace Codehub.WebMVC.Controllers
             return View(model);
         }
         //GET
+        public ActionResult ConnectCss()
+        {
+            //all of this code is used for the drop down list
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new CodehubService(userId);
+            List<CodeHub1> Hubs = service.GetCodeHubs().ToList();
+            ViewBag.CodehubId = Hubs.Select(h => new SelectListItem()
+            {
+                Value = h.CodehubId.ToString(),
+                Text = h.Title
+                
+            }).ToList();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConnectCss(OnlyCodehubId model)
+        {
+            //Grabbing your id from the url and saving it to a variable
+            var id = RouteData.Values["id"] + Request.Url.Query;
+            var cssId = Convert.ToInt32(id);
+
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateCodehubService();
+
+            if (service.ConnectCodeWithAHub(cssId, model))
+            {
+                TempData["SaveRessult"] = "Css Code was added to Codehub";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Css Code could not be added to Codehub");
+
+            return View(model);
+
+        }
+        public ActionResult ConnectBootstrap()
+        {
+            //all of this code is used for the drop down list
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new CodehubService(userId);
+            List<CodeHub1> Hubs = service.GetCodeHubs().ToList();
+            ViewBag.CodehubId = Hubs.Select(h => new SelectListItem()
+            {
+                Value = h.CodehubId.ToString(),
+                Text = h.Title
+            });
+        
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConnectBootstrap(OnlyCodehubId model)
+        {
+            var id = RouteData.Values["id"] + Request.Url.Query;
+            var bootstrapId = Convert.ToInt32(id);
+
+            if (!ModelState.IsValid) return View(model);
+            var service = CreateCodehubService();
+            if (service.ConnectCodeWithAHub(bootstrapId, model))
+            {
+                TempData["SaveRessult"] = "Bootstrap Code was added to Codehub";
+                return RedirectToAction("Index");
+            }
+            ModelState.AddModelError("", "Bootstrap code could not be added to Codehub");
+
+            return View(model);
+
+        }
         public ActionResult Create()
         {
+            ViewBag.CssId = new SelectList(db.CssCodes, "CssId", "CssTitle");
+            ViewBag.BootstrapId = new SelectList(db.BootstrapCodes, "BootstrapId", "BootstrapTitle");
+            ViewBag.CssCode = db.CssCodes;
             return View();
         }
 
@@ -74,33 +150,52 @@ namespace Codehub.WebMVC.Controllers
                 {
                     CodehubId = detail.CodehubId,
                     Title = detail.Title,
-                    Description = detail.Description
+                    Description = detail.Description,
+
                 };
             return View(model);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CodehubEdit model)
-        {
-            if (!ModelState.IsValid) return View(model);
+      
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int id, CodehubEdit model)
+        //{
+        //    if (!ModelState.IsValid) return View(model);
 
-            if (model.CodehubId != id)
-            {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(model);
-            }
+        //    if (model.CodehubId != id)
+        //    {
+        //        ModelState.AddModelError("", "Id Mismatch");
+        //        return View(model);
+        //    }
 
-            var service = CreateCodehubService();
+        //    var service = CreateCodehubService();
+        //    //either css or boostrap id = coded
+        //    service.ConnectCodeWithAHub(model.CodeId, model.CodehubId);
+            
 
-            if (service.UpdateCodehub(model))
-            {
-                TempData["SaveResult"] = "Your note was updated.";
-                return RedirectToAction("Index");
-            }
+        //    if (service.UpdateCodehub(model))
+        //    {
+        //        TempData["SaveResult"] = "Your Hub was updated.";
+        //        return RedirectToAction("Index");
+        //    }
 
-            ModelState.AddModelError("", "Your note could not be updated.");
-            return View(model);
-        }
+        //    ModelState.AddModelError("", "Your Hub could not be updated.");
+        //    return View(model);
+        //}
+        //public ActionResult Add(int codeId, CodeHubId model)
+        //{
+        //    if (!ModelState.IsValid) return View(model);
+
+        //    if (model.CodehubId != id)
+        //    {
+        //        ModelState.AddModelError("", "Id Mismatch");
+        //        return View(model);
+        //    }
+
+        //    var service = CreateCodehubService();
+
+        //    service.ConnectCodeWithAHub(codeId, model);
+        //}
         [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
