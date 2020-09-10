@@ -31,7 +31,7 @@ namespace Codehub.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Codehub> CodeHubs { get; set; }
+        public DbSet<CodeHub1> CodeHubs { get; set; }
         public DbSet<CssCode> CssCodes { get; set; }
         public DbSet<BootstrapCode> BootstrapCodes { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

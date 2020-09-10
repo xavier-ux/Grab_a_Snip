@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codehub.Data
 {
-    public class Codehub
+    public class CodeHub1
     {
         [Key]
         public int CodehubId { get; set; }
@@ -29,9 +29,12 @@ namespace Codehub.Data
 
         public DateTimeOffset? ModifiedUtc { get; set; }
         public virtual ICollection<CssCode> CssCodes { get; set; }
-        public Codehub()
+        public virtual ICollection<BootstrapCode> BootstrapCodes { get; set; }
+        public CodeHub1()
         {
             CssCodes = new HashSet<CssCode>();
+            BootstrapCodes = new HashSet<BootstrapCode>();
         }
+        
     }
 }

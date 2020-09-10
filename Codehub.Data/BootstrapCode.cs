@@ -20,10 +20,15 @@ namespace Codehub.Data
 
         [Required]
         public string Content { get; set; }
+        public virtual ICollection<CodeHub1> Codehubs { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
+        public BootstrapCode()
+        {
+            Codehubs = new HashSet<CodeHub1>();
+        }
     }
 }

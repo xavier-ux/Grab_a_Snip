@@ -62,8 +62,12 @@
     </dl>
 </div>
 <p>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+    <script>
+        new ClipboardJS('.btn')
+    </script>
     @Html.ActionLink("Edit", "Edit", new { id = Model.CodehubId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-@Html.Partial("../Bootstrap/Index2", (Codehub.Models.BootstrapListItem[])Model.bootstrapListItems);
+@*@Html.Partial("../Bootstrap/Index2", (Codehub.Models.BootstrapListItem[])Model.bootstrapListItems);*@
 

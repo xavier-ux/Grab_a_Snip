@@ -21,7 +21,7 @@ namespace Codehub.Services
         public bool CreateCodehub(CodehubCreate model)
         {
             var entity =
-                new Data.Codehub()
+                new Data.CodeHub1()
                 {
                     OwnerId = _userId,
                     Title = model.Title,
@@ -117,20 +117,20 @@ namespace Codehub.Services
                 return query.ToArray();
             }
         }
-        public bool ConnectCodeWithAHub(int CssId, CodeHubId model)
+        public bool ConnectCodeWithAHub(int CodeId, OnlyCodehubId model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var Css =
                     ctx
                     .CssCodes
-                    .Single(cs => cs.CssId == CssId);
+                    .Single(cs => cs.CssId == CodeId);
 
                 var Hubs =
                 ctx
                 .CodeHubs
                 .Single(h => h.CodehubId == model.CodehubId);
-
+                //add Hubs.BootstrapCodes.Add(Bootstrap)
                 Hubs.CssCodes.Add(Css);
                 return ctx.SaveChanges() == 1;
             }
@@ -164,6 +164,15 @@ namespace Codehub.Services
                 ctx.CodeHubs.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
+            }
+        }
+        public IEnumerable<Codehub.Data.CodeHub1> GetCodeHubs()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.CodeHubs.ToList();
+
+                return query;
             }
         }
     }

@@ -22,7 +22,7 @@ namespace Codehub.Data
 
         [Required]
         public string Content { get; set; }
-        public virtual ICollection<Codehub> Codehubs { get; set; }
+        public virtual ICollection<CodeHub1> Codehubs { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
@@ -30,7 +30,7 @@ namespace Codehub.Data
         public DateTimeOffset? ModifiedUtc { get; set; }
         public CssCode()
         {
-            Codehubs = new HashSet<Codehub>();
+            Codehubs = new HashSet<CodeHub1>();
         }
     }
 }

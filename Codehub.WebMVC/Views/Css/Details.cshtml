@@ -66,6 +66,7 @@
     <script>
         new ClipboardJS('.btn')
     </script>
+    @Html.ActionLink("Add to CodeHub", "../Codehub/ConnectCss", new { id = Model.CssId})
     @Html.ActionLink("Edit", "Edit", new { id = Model.CssId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
